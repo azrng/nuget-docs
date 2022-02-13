@@ -1,3 +1,5 @@
+> 最新更新时间：2022年2月13日
+
 # Common
 
 ## 介绍
@@ -222,8 +224,28 @@ ParameterException
 UserAuthException
 ```
 
+### 依赖注入批量注册
+
+需要注册的实现类继承指定的接口，比如用户实现类
+
+```
+public class UserService : IScopedDependency, IUserService
+```
+
+也可以继承自：ITransientDependency、ISingletonDependency，根据自己需求不同继承合适声明周期的接口
+
+批量注入示例
+
+```
+services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.dll");
+或者
+services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
+```
+
 ## 版本更新记录
 
+* 1.2.7
+  * 增加.NetCore默认DI容器的批量注入方法
 * 1.2.6
   * 移除分页的相关的类
   * 增加依赖注入的类
