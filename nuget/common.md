@@ -25,6 +25,10 @@ bool HasChinese(this string str)
 bool IsNotNullOrWhiteSpace(this string currentString)
 //判断字符串 是  null、空和空白字符
 bool IsNullOrWhiteSpace(this string currentString)
+//判断字符串是  null、空    
+bool IsNullOrEmpty(this string currentString)
+//判断字符串不是  null、空
+bool IsNotNullOrEmpty(this string currentString)    
 //字符串分割成字符串数组
 string[] ToStrArray(this string str, string separator = ",")
 //根据条件拼接字符串
@@ -244,6 +248,8 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 
 ## 版本更新记录
 
+* 1.2.8(未发布)
+  * 更新字符串Null值校验
 * 1.2.7
   * 增加.NetCore默认DI容器的批量注入方法
 * 1.2.6
