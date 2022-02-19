@@ -270,8 +270,9 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 
 ## 版本更新记录
 
-* 1.2.8(未发布)
+* 1.2.8
   * 更新字符串Null值校验
+  * 增加雪花ID算法
 * 1.2.7
   * 增加.NetCore默认DI容器的批量注入方法
 * 1.2.6
