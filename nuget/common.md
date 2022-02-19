@@ -176,6 +176,28 @@ string HtmlToText(string strHtml)
 string GetValue(params string[] sections)
 ```
 
+#### 雪花Id
+
+```
+Snowflake snowflake = new Snowflake();
+// snowflake.Sequence = 10;//设置序列
+var id = snowflake.NewId();//获取下一个ID
+Console.WriteLine(id);
+Console.WriteLine(snowflake.NewId(DateTime.Now.AddDays(1)));//获取指定时间的Id，带上节点和序列号。可用于根据业务时间构造插入Id
+Console.WriteLine(snowflake.GetId(DateTime.Now.AddDays(1)));//时间转为Id，不带节点和序列号。可用于构建时间片段查询
+var flag = snowflake.TryParse(id, out DateTime time, out int worlId, out int sequence);//尝试分析
+Console.WriteLine($"time:{time} workId:{worlId} sequence:{sequence}");
+```
+
+输出结果
+
+```
+6900931916313923585
+6901294304267603970
+6901294304266813440
+time:2022/2/19 22:39:41 workId:193 sequence:1
+```
+
 ### 请求和返回公共类
 
 请求类
