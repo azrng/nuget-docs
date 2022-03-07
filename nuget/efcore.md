@@ -7,7 +7,7 @@
  Statrup的ConfigureServices方法添加
 
 ```
-services.AddAutoGenerationId(); //增加自增ID 
+services.AddEntityBase(); //增加自增ID 
 ```
 
 继承公共基类
