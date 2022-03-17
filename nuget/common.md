@@ -293,6 +293,10 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 
 ## 版本更新记录
 
+* 1.3.0-beta3
+  * 增加BaseRequestDto重载
+* 1.3.0-beta2
+  * 修复BaseRequestDto<T>导致UserIdentity出错问题
 * 1.3.0-beta1
   * 支持.Net6版本
   * 更新Operator支持主键设置类型
