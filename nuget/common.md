@@ -45,7 +45,7 @@ var start = DateTime.Now.GetStartDateTime();
 var end = DateTime.Now.GetEndDateTime();
 
 //获取秒时间戳
-var unixSecond = ExtTime.GetUnixTimeSeconds();//DateTimeOffset
+var unixSecond = TimeExtensions.GetUnixTimeSeconds();//DateTimeOffset
 
 //时间戳转本地时间-时间戳精确到秒
 var datetime1 = unixSecond.ToLocalTimeDateBySeconds();
@@ -54,7 +54,7 @@ var datetime1 = unixSecond.ToLocalTimeDateBySeconds();
 var unixSecond2 = DateTime.Now.ToUnixTimestampBySeconds();//DateTime
 
 //获取毫秒时间戳
-var unixMillisecond = ExtTime.GetUnixTimeMilliseconds();//DateTimeOffset
+var unixMillisecond = TimeExtensions.GetUnixTimeMilliseconds();//DateTimeOffset
 //时间转时间戳Unix-时间戳精确到毫秒
 var unixMillisecond2 = DateTime.Now.ToUnixTimestampByMilliseconds();//DateTime
 
@@ -150,7 +150,7 @@ string RndNum(int codeNum)
 #### 表达式树
 
 ```c#
-PredicateExtensions.True
+PredicateExtensions.True<T>
 ```
 
 #### 编码操作类
@@ -172,6 +172,9 @@ string HtmlToText(string strHtml)
 #### 配置读取
 
 ```
+// 配置
+AppSettings.Configuration=Configuration;
+
 //查询指定的配置信息
 string GetValue(params string[] sections)
 ```
@@ -198,30 +201,50 @@ Console.WriteLine($"time:{time} workId:{worlId} sequence:{sequence}");
 time:2022/2/19 22:39:41 workId:193 sequence:1
 ```
 
-### 请求和返回公共类
+### 自定义模型验证
 
-请求类
+ConfigureServices中注册自定义模型验证过滤器并禁用默认的自动模型验证
 
 ```
-//分页请求类
-GetPageRequest:PageIndex、PageSize
-//分页请求类带排序信息
-GetPageSortRequest:PageIndex、PageSize、SortContents
+    services.AddControllers(options =>
+    {
+        options.Filters.Add<ModelActionFiter>(); //注册过滤器 
+    }).AddNewtonsoftJson().ConfigureApiBehaviorOptions(options =>
+    {
+        //[ApiController] 默认自带有400模型验证，且优先级比较高，如果需要自定义模型验证，则需要先关闭默认的模型验证
+        options.SuppressModelStateInvalidFilter = true; 
+    });
 ```
+
+### 公共返回类
 
 返回类
 
 ```
-分页返回类
-GetQueryPageResult<T>：Rows、PageInfo
-
 IResultModel
 IResultModel<T>
 ResultModel:IsSuccess、Code、Message、Message
 ResultModel<T>：IsSuccess、Code、Message、Message、Data
 ```
 
-### 异常处理
+### 自定义返回类过滤器
+
+默认给所有接口最外层包装一层返回类
+
+```
+services.AddControllers(options => 
+{
+    option.Filters.Add(typeof(CustomResultPackFilter));
+});
+```
+
+若是有些不想包装一层，需要增加特性
+
+```
+[NoWrappeAttribute]
+```
+
+### 全局异常处理
 
 使用全局异常处理中间件
 
@@ -270,6 +293,9 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 
 ## 版本更新记录
 
+* 1.3.0-beta1
+  * 支持.Net6版本
+  * 更新Operator支持主键设置类型
 * 1.2.8
   * 更新字符串Null值校验
   * 增加雪花ID算法
