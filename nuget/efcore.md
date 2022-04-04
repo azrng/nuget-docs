@@ -28,6 +28,8 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ## 版本更新记录
 
+* 1.0.0-beta5
+  * 更新注册的方法从AddEntityBase变更为AddIdHelper()
 * 1.0.0-beta4
   * 支持主键自定义类型
 * 1.1.0-beta3
@@ -54,8 +56,12 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ## 操作例子
 
+
+
 ## 版本更新记录
 
+* 1.0.0-beta4
+  * 修改注入方法名称为AddEntityFramework
 * 1.1.0-beta3
   * 增加分页相关的类
   * 去除common包的依赖
@@ -76,6 +82,8 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ## 版本更新记录
 
+* 1.1.0-beta4
+  * 修改注入方法名称为AddEntityFramework
 * 1.1.0-beta3
   * 增加分页相关的类
   * 去除common包的依赖
@@ -95,9 +103,17 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ## 版本更新记录
 
-* 
+* 1.1.0-beta3(未发布)
+  * 修改注入方法名称为AddEntityFramework
 * 1.0.0-beta2
   * 解决不显示主键类型
 * 1.0.0-beta1
   * 修改版本支持.net5、.net6、.netstandard2.1
+
+# Common.EFCore.SQLite
+
+## 版本更新记录
+
+* 1.0.0-beta1(未发布)
+  * 修改注入方法名称为AddEntityFramework
 
