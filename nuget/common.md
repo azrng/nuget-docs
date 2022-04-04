@@ -109,8 +109,15 @@ string ToDecimalNoZeroString(this decimal dec, int number = 1)
 #### Enumerable扩展
 
 ```
+//检查集合是null或者空
+bool IsNullOrEmpty<T>(this IEnumerable<T> source)
+
+//检查集合不是null或者空
+bool IsNotNullOrEmpty<T>(this IEnumerable<T> source)
+
 //带条件的where
 IQueryable<T> WhereIF<T>(this IQueryable<T> source, bool condition, Expression<Func<T, bool>> predicate)
+
 //带条件的where
 IEnumerable<T> WhereIF<T>(this IEnumerable<T> source, bool condition, Func<T, bool> predicate)
 ```
@@ -128,11 +135,24 @@ DescriptionAttribute[] GetDescriptAttr(this FieldInfo fieldInfo)
 Dictionary<int, string> EnumToDictionary<T>() where T : Enum    
 ```
 
-#### 集合扩展
+#### Session扩展
+
+SessionExtensions静态类
 
 ```
- bool IsNullOrEmpty<T>(this ICollection<T> source) //检查集合是否存在元素
+//设置session
+void SetSession(string key, string value)
+void SetSession<T>(string key, T value)
+
+//获取Session
+string GetSession(string key)
+T GetSession<T>(string key)
+
+//移除session
+void Remove(params string[] keys)
 ```
+
+
 
 ### 帮助类
 
@@ -293,6 +313,8 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 
 ## 版本更新记录
 
+* 1.3.0-beta4
+  * 更新session扩展
 * 1.3.0-beta3
   * 增加BaseRequestDto重载
 * 1.3.0-beta2

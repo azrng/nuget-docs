@@ -67,21 +67,8 @@ services.AddEmail(info =>
 
 
 
-***
 
 
-### 6、Common.HttpClients
-#### 操作例子
-```c#
-ConfigureServices里面添加：
-services.AddHttpClientService();  
-需要用到的地方直接注入IHttpClientHelper进行
-```
-#### 版本更新记录
->1.0.0 3.1版本的http请求公共库   
->1.1.0 更新版本为5.0   
->1.1.1 更新post方法,配置多个目标框架  
->1.1.2 更新post方法同时兼容string和其他类型
 ***
 
 
@@ -171,13 +158,7 @@ services.AddHttpClientService();
 然后注入：IHttpClientHelper
 ```
 #### 版本更新记录
->1.0.0 2.0版本封住get post put delete  
->1.0.1 更新post方法同时兼容string和其他类型  
->1.0.2 更新方法名称和增加注释 已发布  
->1.0.3 优化方法，删除无用代码，修改最后序列化方式  
->1.0.4 优化请求和删除方法  
->1.0.5 增加userAgent  
->1.0.6 增加DownloadData方法
+>
 ***
 
 ### 12、Common.Cache.CSRedis
