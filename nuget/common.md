@@ -37,15 +37,30 @@ StringBuilder AppendIF(this StringBuilder builder, bool condition, string str)
 
 #### 时间扩展
 
-```c#
-//获取以0点0分0秒开始的日期
-var start = DateTime.Now.GetStartDateTime();
+```
+//获取这个月第一天
+DateTime GetThisMonth(this DateTime dateTime)
 
-//获取以23点59分59秒结束的日期
-var end = DateTime.Now.GetEndDateTime();
+//获取下个月第一天
+DateTime GetNextMonth(this DateTime dateTime)
 
-//获取秒时间戳
-var unixSecond = TimeExtensions.GetUnixTimeSeconds();//DateTimeOffset
+//获取最后一个月一号
+DateTime GetLastMonth(this DateTime dateTime)
+
+//获取今天凌晨0时
+DateTime GetToday(this DateTime dateTime)
+
+//获取今天晚上23:59:59
+DateTime GetTodayEndTime(this DateTime dateTime)
+
+//获取昨天零时
+DateTime GetYesterday(this DateTime dateTime)
+
+//获取明天零时
+DateTime GetTomorrow(this DateTime dateTime)
+
+//获取时间戳(true:获取秒 false:获取毫秒)
+long GetUnixTime(bool isSeconds);//DateTimeOffset
 
 //时间戳转本地时间-时间戳精确到秒
 var datetime1 = unixSecond.ToLocalTimeDateBySeconds();
@@ -60,11 +75,7 @@ var unixMillisecond2 = DateTime.Now.ToUnixTimestampByMilliseconds();//DateTime
 
 //时间转时间戳Unix-时间戳精确到秒
 var datetime2= unixMillisecond.ToLocalTimeDateByMilliseconds();
-```
 
-#### 日期扩展
-
-```
 //当前时间是否周末
 bool IsWeekend(this DateTime dateTime)
     
@@ -152,7 +163,40 @@ T GetSession<T>(string key)
 void Remove(params string[] keys)
 ```
 
+#### DataTable扩展
 
+```
+//IList To DataTable
+DataTable ToDataTable(this IList list, bool hasColumns = true)
+
+//List To DataTable
+DataTable ToDataTable<T>(this List<T> list, bool hasColumns = true)
+
+//将List追加到其他DataTable
+DataTable ToDataTable(this IList list, DataTable table, bool hasColumns = true)
+```
+
+#### 编码扩展
+
+```
+//获取字符串里面的URL地址
+string GetUrl(this string str)
+
+//UrlEncode
+string UrlEncode(this string target)
+string UrlEncode(this string target, Encoding encoding)
+
+//UrlDecode
+string UrlDecode(this string target)
+string UrlDecode(this string target, Encoding encoding)
+
+//AttributeEncode
+string AttributeEncode(this string target)
+
+//HtmlEncode
+string HtmlEncode(this string target)
+string HtmlDecode(this string target)
+```
 
 ### 帮助类
 
@@ -171,15 +215,6 @@ string RndNum(int codeNum)
 
 ```c#
 PredicateExtensions.True<T>
-```
-
-#### 编码操作类
-
-```
-//字符串转Unicode码
-string StringToUnicode(string value)
-//Unicode转字符串
-string UnicodeToString(string unicode)
 ```
 
 #### HTML
@@ -313,6 +348,9 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 
 ## 版本更新记录
 
+* 1.3.0-beta5
+  * 增加DataTableExtensions
+  * 更新时间扩展类
 * 1.3.0-beta4
   * 更新session扩展
 * 1.3.0-beta3
