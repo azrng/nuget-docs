@@ -146,23 +146,6 @@ DescriptionAttribute[] GetDescriptAttr(this FieldInfo fieldInfo)
 Dictionary<int, string> EnumToDictionary<T>() where T : Enum    
 ```
 
-#### Session扩展
-
-SessionExtensions静态类
-
-```
-//设置session
-void SetSession(string key, string value)
-void SetSession<T>(string key, T value)
-
-//获取Session
-string GetSession(string key)
-T GetSession<T>(string key)
-
-//移除session
-void Remove(params string[] keys)
-```
-
 #### DataTable扩展
 
 ```
@@ -198,6 +181,13 @@ string HtmlEncode(this string target)
 string HtmlDecode(this string target)
 ```
 
+#### HttpContext扩展
+
+```
+//获取请求的ip地址
+string ReqestIp(this HttpContext httpContext)
+```
+
 ### 帮助类
 
 #### 公共帮助类
@@ -209,6 +199,32 @@ string CreateNo()
 string RndNum(int codeNum)
 随机数(示例：e/6LMJB+zyHK6iCcgOAZgu7dkE9fvBkAbAIy3pIE3RY=)
 //string GenerateRandomNumber(int len)
+```
+
+#### MyHttpContext帮助类
+
+需要提前注册：MyHttpContext.ServiceProvider=xxxServiceProvider
+
+```
+//获取HttpContext
+MyHttpContext.Current
+```
+
+#### Session帮助类
+
+使用SessionHelper需要提前注册MyHttpContext.ServiceProvider
+
+```
+//设置session
+void SetSession(string key, string value)
+void SetSession<T>(string key, T value)
+
+//获取Session
+string GetSession(string key)
+T GetSession<T>(string key)
+
+//移除session
+void Remove(params string[] keys)
 ```
 
 #### 表达式树
@@ -255,6 +271,29 @@ Console.WriteLine($"time:{time} workId:{worlId} sequence:{sequence}");
 6901294304266813440
 time:2022/2/19 22:39:41 workId:193 sequence:1
 ```
+
+#### MD5哈希算法
+
+```
+//字符串md5哈希算法
+string GetMd5Hash(this string str)
+
+//文件获取md5
+string GetFileMd5Hash(string path)
+```
+
+#### Sha哈希算法
+
+```
+//获取字符串sha1值
+string GetSHA1Hash(this string str)
+//获取字符串sha256值
+string GetSHA256Hash(this string str)
+//获取字符串sha512值
+string GetSHA512Hash(this string str)
+```
+
+
 
 ### 自定义模型验证
 
@@ -348,11 +387,13 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 
 ## 版本更新记录
 
-* 1.3.0-beta5
+* 1.3.0-beta4
+  * 更新session帮助类
   * 增加DataTableExtensions
   * 更新时间扩展类
-* 1.3.0-beta4
-  * 更新session扩展
+  * 增加HttpContextExtensions
+  * 修改md5哈希算法
+  * 增加sha哈希算法
 * 1.3.0-beta3
   * 增加BaseRequestDto重载
 * 1.3.0-beta2
