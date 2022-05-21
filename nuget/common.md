@@ -181,7 +181,7 @@ string HtmlEncode(this string target)
 string HtmlDecode(this string target)
 ```
 
-## Base64扩展
+#### Base64扩展
 
 Base64Extensions
 
@@ -251,14 +251,16 @@ PredicateExtensions.True<T>
 string HtmlToText(string strHtml)
 ```
 
-#### 配置读取
+#### 汉字转拼音
+
+PinYinHelper
 
 ```c#
-// 配置
-AppSettings.Configuration=Configuration;
+//汉字转化为大写拼音
+string GetPinyinQuanPin(string str)
 
-//查询指定的配置信息
-string GetValue(params string[] sections)
+//汉字转化为拼音大写首字母
+string GetFirstPinyin(string str)
 ```
 
 #### 雪花Id
@@ -391,6 +393,9 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 
 ## 版本更新记录
 
+* 1.3.0-beta6
+  * 优化扩展方法命名空间，正规化
+  * 增加汉字获取拼音全拼和首字母方法
 * 1.3.0-beta5
   * 将一些mvc里面的公共类迁移出来，干净common
 * 1.3.0-beta4

@@ -45,6 +45,16 @@ T GetSession<T>(string key)
 void Remove(params string[] keys)
 ```
 
+#### 配置读取
+
+```c#
+// 配置
+AppSettings.Configuration=Configuration;
+
+//查询指定的配置信息
+string GetValue(params string[] sections)
+```
+
 ### 公共返回类
 
 封装了公共的返回类
@@ -284,17 +294,27 @@ public class UserService : IScopedDependency, IUserService
 
 也可以继承自：ITransientDependency、ISingletonDependency，根据自己需求不同继承合适声明周期的接口
 
-批量注入示例
+
 
 ```c#
+//批量注入示例
 services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.dll");
 或者
 services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
+
+//或者使用基础的方法，让继承某一类的注入
+services.RegisterUniteServices(assemblies, typeof(ISingletonDependency), ServiceLifetime.Singleton);
 ```
 
 ## 版本更新记录
 
-* 0.0.1-beta1
-  * 从common里面移出来一些方法
+* 0.0.1-beat2
   
+  * 优化扩展方法命名空间，正规化
+  
+* 0.0.1-beta1
+
+  * 从common里面移出来一些方法
+
     
+
