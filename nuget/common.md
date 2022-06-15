@@ -181,6 +181,13 @@ string HtmlEncode(this string target)
 string HtmlDecode(this string target)
 ```
 
+#### 正则扩展
+
+```
+```
+
+
+
 #### Base64扩展
 
 Base64Extensions
@@ -284,6 +291,16 @@ Console.WriteLine($"time:{time} workId:{worlId} sequence:{sequence}");
 6901294304266813440
 time:2022/2/19 22:39:41 workId:193 sequence:1
 ```
+
+### 性能检测
+
+来自老赵的性能检测帮助类
+
+```
+CodeTimerHelper
+```
+
+
 
 ### 公共返回类
 
@@ -393,6 +410,10 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 
 ## 版本更新记录
 
+* 1.3.0-beta7
+  * 人信息扩展
+  * 正则扩展
+  * 增加性能检测帮助类CodeTimerHelper
 * 1.3.0-beta6
   * 优化扩展方法命名空间，正规化
   * 增加汉字获取拼音全拼和首字母方法
