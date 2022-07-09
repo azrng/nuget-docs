@@ -28,6 +28,10 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ## 版本更新记录
 
+* 1.0.0-beta7
+  * 增加执行SQL扩展
+  * 增加非追踪
+
 * 1.0.0-beta5
   * 更新注册的方法从AddEntityBase变更为AddIdHelper()
 * 1.0.0-beta4
@@ -60,6 +64,8 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ## 版本更新记录
 
+* 1.1.0-beta5
+  * 增加非追踪
 * 1.0.0-beta4
   * 修改注入方法名称为AddEntityFramework
 * 1.1.0-beta3
@@ -82,6 +88,9 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ## 版本更新记录
 
+* 1.1.0-beta5
+  * 增加非追踪
+  
 * 1.1.0-beta4
   * 修改注入方法名称为AddEntityFramework
 * 1.1.0-beta3
@@ -103,7 +112,9 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ## 版本更新记录
 
-* 1.1.0-beta3(未发布)
+* 1.1.0-beta4
+  * 增加非追踪
+* 1.1.0-beta3
   * 修改注入方法名称为AddEntityFramework
 * 1.0.0-beta2
   * 解决不显示主键类型
@@ -114,6 +125,17 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ## 版本更新记录
 
-* 1.0.0-beta1(未发布)
+* 1.1.0-beta2
+  * 增加非追踪
+* 1.0.0-beta1
+  * 修改注入方法名称为AddEntityFramework
+
+# Common.EFCore.SQLServer
+
+## 版本更新记录
+
+* 1.1.0-beta2
+  * 增加非追踪
+* 1.0.0-beta1
   * 修改注入方法名称为AddEntityFramework
 
