@@ -1,6 +1,18 @@
-# Common.YuQueSdk
+---
+title: YuQueSdk
+lang: zh-CN
+date: 2023-07-20
+publish: true
+author: azrng
+order: 70
+category:
+ - nuget
+tag:
+ - 库
+---
+## Common.YuQueSdk
 
-## 介绍
+### 介绍
 
 适用于.NetCore的语雀Sdk，与语雀官方保持一致。
 
@@ -8,7 +20,7 @@
 >
 > Apifox文档：https://www.apifox.cn/apidoc/project-584301/api-10357086
 
-#  功能
+### 功能
 
 - 用户
   - [x] 根据用户名获取单个用户信息
@@ -36,8 +48,7 @@
   - [ ] 更新文档
   - [ ] 删除文档
 
-
-## 操作
+### 操作
 
 注册
 
@@ -58,6 +69,8 @@ public TestController(IYuQueHelper yuQueHelper)
 {
     _yuQueHelper = yuQueHelper;
 }
+
+// 注入扩展IYuQueExtensionHelper，可以获取目录列表以及仓库文档到指定目录
 ```
 
 ### 用户
@@ -65,12 +78,6 @@ public TestController(IYuQueHelper yuQueHelper)
 ```
 //获取当个用户信息
 var user = await _yuQueHelper.GetUsersAsync("userLoginName");
-```
-
-### 组织
-
-```
-
 ```
 
 ### 文档

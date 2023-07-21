@@ -1,7 +1,15 @@
-> 最新更新时间：2022年5月19日
-
-# Common.Mvc
-
+---
+title: Common.Mvc
+lang: zh-CN
+date: 2023-07-20
+publish: true
+author: azrng
+order: 40
+category:
+ - nuget
+tag:
+ - 库
+---
 ## 介绍
 
 常见的Asp.NetCore里面辅助方法
@@ -154,7 +162,7 @@ services.AddControllers(options =>
 });
 ```
 
-若是有些Action不想包装一层，只需要标注特性
+若是有些Action不想包装一层，只需要标注特性即可在返回的时候不显示包装的一层
 
 ```c#
 [NoWrapperAttribute]
@@ -162,7 +170,48 @@ services.AddControllers(options =>
 
 ### 自定义模型验证
 
-因为默认是启用模型校验的，所以当你传的model参数有问题的时候，还未到达action的时候已经处理了校验，所以封装该模型错误信息的过滤器需要先关闭默认的模型校验。
+因为默认是启用模型校验的，所以当你传的model参数有问题的时候，还未到达action的时候已经处理了校验。
+
+
+
+举例，当我们有一个post的接口，入参为
+
+```
+public class Userinfo
+{
+    [Required]
+    [MinLength(5)]
+    public string Id { get; set; }
+
+    [MinLength(6)]
+    public string Name { get; set; }
+}
+```
+
+当传输不符合条件的数据时候返回的状态码是400，效果如下
+
+```
+{
+    "type": "https://tools.ietf.org/html/rfc7231#section-6.5.1",
+    "title": "One or more validation errors occurred.",
+    "status": 400,
+    "traceId": "00-40ff21ce6815e3b18232fa00f2024f67-84a9ab2db0b01cc9-00",
+    "errors": {
+        "Id": [
+            "The Id field is required."
+        ],
+        "Name": [
+            "The field Name must be a string or array type with a minimum length of '6'."
+        ]
+    }
+}
+```
+
+这个效果是不方便前端处理的，所以我们使用的，所以我们自己做模型校验来封装错误信息
+
+
+
+> 注意：需要先关闭默认的模型校验。
 
 在ConfigureServices中注册自定义模型验证过滤器并禁用默认的自动模型验证
 
@@ -176,43 +225,28 @@ services.AddControllers(options =>
 	options.SuppressModelStateInvalidFilter = true; 
 });
 ```
-举例如下
-```c#
-public class Class
-{
-    [Required]
-    [MinLength(5)]
-    public string Id { get; set; }
 
-    [MinLength(6)]
-    public string Name { get; set; }
-}
-```
-我传递不符合条件的值看返回结果
+我们再次调用接口
+
 ```c#
 {
-  "data": {
     "isSuccess": false,
     "code": "400",
     "message": "参数格式不正确",
     "errors": [
-      {
-        "field": "Id",
-        "message": "The field Id must be a string or array type with a minimum length of '5'."
-      },
-      {
-        "field": "Name",
-        "message": "The field Name must be a string or array type with a minimum length of '6'."
-      }
+        {
+            "field": "Id",
+            "message": "The Id field is required."
+        },
+        {
+            "field": "Name",
+            "message": "The field Name must be a string or array type with a minimum length of '6'."
+        }
     ]
-  },
-  "isSuccess": true,
-  "code": "200",
-  "message": "",
-  "errors": []
 }
 ```
-这时候我们的错误信息会显示到error属性里面。
+
+这时候我们的错误信息会显示到error属性里面并且http错误码为400。
 
 ### 全局异常处理
 
@@ -238,6 +272,7 @@ app.Run();
 ```
 
 编写一个接口抛出异常
+
 ```C#
 [HttpGet]
 public IEnumerable<WeatherForecast> Get()
@@ -256,6 +291,7 @@ public IEnumerable<WeatherForecast> Get()
 ```
 
 返回结果
+
 ```json
 {
   "isSuccess": false,
@@ -294,8 +330,6 @@ public class UserService : IScopedDependency, IUserService
 
 也可以继承自：ITransientDependency、ISingletonDependency，根据自己需求不同继承合适声明周期的接口
 
-
-
 ```c#
 //批量注入示例
 services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.dll");
@@ -308,8 +342,39 @@ services.RegisterUniteServices(assemblies, typeof(ISingletonDependency), Service
 
 ## 版本更新记录
 
+* 0.1.0-beta1
+  * 升级支持.net7
+
+* 0.0.1-beta6
+  * 考虑到该包只能在API层使用，所以移除增加appsettings、cron帮助类、HttpContextManager、HttpContextExtensions、ServiceProviderHelper、SessionHelper、ICurrentUser、BaseService到AzrngCommon包
+
+  * 异常处理中间件增加请求日志输出
+
+  * 优化AppSettings写法
+
+  * 增加了如果是FileContentResult，那么就不包装返回
+
+  * 如果没有注入配置，那么就使用默认的CommonMvcConfig配置
+
+* 0.0.1-beta5
+  * 优化AddDefaultControllers方法，返回值修改为IMvcBuilder
+
+  * 公共返回包装的方法优化对415错误的处理，遇到415错误的时候，直接返回不再包装
+
+* 0.0.1-beta4
+  * 优化支持的框架版本，支持3.1、5.0、6.0
+
+  * 增加默认的控制器处理，必须添加AddDefaultControllers操作
+
+* 0.0.1-beta3
+  * 优化支持的框架版本，支持3.1、5.0、6.0
+  * 将cors默认全部允许继承，直接使用services.AddAnyCors();  app.UseAnyCors();
+  * 处理自定义模型校验返回状态码为200的错误情况
+  * 处理自定义模型校验和自定义返回类一起使用导致重复包装的问题
+
 * 0.0.1-beat2
   
+  * 将关于swagger的东西去掉
   * 优化扩展方法命名空间，正规化
   
 * 0.0.1-beta1

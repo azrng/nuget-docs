@@ -1,16 +1,47 @@
-> 最新更新时间：2022年5月19日
+---
+title: 基础库
+lang: zh-CN
+date: 2023-07-20
+publish: true
+author: azrng
+order: 10
+category:
+ - nuget
+tag:
+ - 库
+---
+## Common.Core
 
-# Common
+### 版本更新记录
 
-## 介绍
+* 1.0.4
+  * 迁移base64的扩展到StringExtension，并且改名为ToBase64Encode、FromBase64Decode
+  * 增加时间段和时间点相互转换代码
+  
+* 1.0.3
+  * 增加任务运行时间限制方法，TaskHelper.RunTimeLimitAsync
 
-常见的公共类封装
+  * 增加字符串输出扩展
 
-## 操作
+* 1.0.2
+  * 增加本地日志文件操作类
 
-### 扩展类
+* 1.0.1
+  * 引用Newtonsoft.Json包，增加json操作扩展
+  * 将扩展方法的命名空间改为Common.Extension
+* 1.0.0
+  * 将common中的部分类移动到该类库中
+## Common
 
-#### 字符串扩展
+### 介绍
+
+常见的公共类封库，继承自Common.Core
+
+### 操作
+
+#### 扩展类
+
+##### 字符串扩展
 
 ```c#
 //判断字符串是否是数值类型
@@ -33,9 +64,13 @@ bool IsNotNullOrEmpty(this string currentString)
 string[] ToStrArray(this string str, string separator = ",")
 //根据条件拼接字符串
 StringBuilder AppendIF(this StringBuilder builder, bool condition, string str)
+//获取特定位置的字符串    
+string GetByIndex(this string str, int index)   
+//忽略大小写的字符串比较    
+bool EqualsNoCase(this string aimStr, string comparaStr)    
 ```
 
-#### 时间扩展
+##### 时间扩展
 
 ```c#
 //获取这个月第一天
@@ -89,9 +124,9 @@ string ToStandardString(this DateTime time, string format)
 string ToStandardString(this DateTime time)
 ```
 
-#### Json扩展
+##### Json扩展
 
-```c#
+```
 //对象转json字符串
 string ToJson(this object obj)
 //对象转json字符串
@@ -106,7 +141,7 @@ DataTable ToTable(this string json)
 JObject ToJObject(this string json)
 ```
 
-#### Decimal扩展
+##### Decimal扩展
 
 ```c#
 //自定义格式，默认返回返回格式：1.01
@@ -117,7 +152,7 @@ string ToDecimalStandardString(this decimal dec)
 string ToDecimalNoZeroString(this decimal dec, int number = 1)
 ```
 
-#### Enumerable扩展
+##### Enumerable扩展
 
 ```c#
 //检查集合是null或者空
@@ -133,7 +168,7 @@ IQueryable<T> WhereIF<T>(this IQueryable<T> source, bool condition, Expression<F
 IEnumerable<T> WhereIF<T>(this IEnumerable<T> source, bool condition, Func<T, bool> predicate)
 ```
 
-#### 枚举扩展
+##### 枚举扩展
 
 ```c#
 //获取枚举描述
@@ -146,9 +181,9 @@ DescriptionAttribute[] GetDescriptAttr(this FieldInfo fieldInfo)
 Dictionary<int, string> EnumToDictionary<T>() where T : Enum    
 ```
 
-#### DataTable扩展
+##### DataTable扩展
 
-```c#
+```
 //IList To DataTable
 DataTable ToDataTable(this IList list, bool hasColumns = true)
 
@@ -159,9 +194,9 @@ DataTable ToDataTable<T>(this List<T> list, bool hasColumns = true)
 DataTable ToDataTable(this IList list, DataTable table, bool hasColumns = true)
 ```
 
-#### 编码扩展
+##### 编码扩展
 
-```c#
+```
 //获取字符串里面的URL地址
 string GetUrl(this string str)
 
@@ -181,16 +216,7 @@ string HtmlEncode(this string target)
 string HtmlDecode(this string target)
 ```
 
-#### 正则扩展
-
-```
-```
-
-
-
-#### Base64扩展
-
-Base64Extensions
+##### Base64扩展
 
 ```
 //Base64编码，采用utf8编码方式加密
@@ -206,11 +232,17 @@ string Base64Encode(Encoding encodeType, string source)
 string Base64Decode(Encoding encodeType, string result)
 ```
 
-### 帮助类
+##### 集合扩展
 
-#### 公共帮助类
+```
+ bool IsNullOrEmpty<T>(this ICollection<T> source) //检查集合是否存在元素
+```
 
-```c#
+#### 帮助类
+
+##### 公共帮助类
+
+```
 //根据时间自动生成编号  201008251145409865
 string CreateNo()
 //生成0-9随机数
@@ -219,7 +251,7 @@ string RndNum(int codeNum)
 //string GenerateRandomNumber(int len)
 ```
 
-#### MyHttpContext帮助类
+##### MyHttpContext帮助类
 
 需要提前注册：MyHttpContext.ServiceProvider=xxxServiceProvider
 
@@ -228,7 +260,7 @@ string RndNum(int codeNum)
 MyHttpContext.Current
 ```
 
-#### Session帮助类
+##### Session帮助类
 
 使用SessionHelper需要提前注册MyHttpContext.ServiceProvider
 
@@ -245,20 +277,29 @@ T GetSession<T>(string key)
 void Remove(params string[] keys)
 ```
 
-#### 表达式树
+##### 表达式树
 
 ```c#
-PredicateExtensions.True<T>
+PredicateExtensions.True
 ```
 
-#### HTML
+##### 编码操作类
+
+```
+//字符串转Unicode码
+string StringToUnicode(string value)
+//Unicode转字符串
+string UnicodeToString(string unicode)
+```
+
+##### HTML
 
 ```c#
 //将HTML标签转换成TEXT文本
 string HtmlToText(string strHtml)
 ```
 
-#### 汉字转拼音
+##### 汉字转拼音
 
 PinYinHelper
 
@@ -270,7 +311,7 @@ string GetPinyinQuanPin(string str)
 string GetFirstPinyin(string str)
 ```
 
-#### 雪花Id
+##### 雪花Id
 
 ```c#
 Snowflake snowflake = new Snowflake();
@@ -292,7 +333,7 @@ Console.WriteLine($"time:{time} workId:{worlId} sequence:{sequence}");
 time:2022/2/19 22:39:41 workId:193 sequence:1
 ```
 
-### 性能检测
+##### 性能检测
 
 来自老赵的性能检测帮助类
 
@@ -300,9 +341,31 @@ time:2022/2/19 22:39:41 workId:193 sequence:1
 CodeTimerHelper
 ```
 
+##### 配置读取
 
+首先先配置IConfiguration
 
-### 公共返回类
+```
+//.net6之前
+public Startup(IConfiguration configuration, IWebHostEnvironment env)
+{
+    Configuration = configuration;
+    Env = env;
+
+    AppSettings.InitConfiguration(configuration);
+}
+// .net6
+AppSettings.InitConfiguration(builder.Configuration);
+```
+
+使用方法
+
+```
+var name = AppSettings.GetValue("Service:Name");
+var name = AppSettings.GetValue<string>("Service:Name");
+```
+
+##### 公共返回类
 
 封装了公共的返回类
 
@@ -390,7 +453,7 @@ public IResultModel<IEnumerable<WeatherForecast>> Get()
 }
 ```
 
-### 依赖注入批量注册
+##### 依赖注入批量注册
 
 需要注册的实现类继承指定的接口，比如用户实现类
 
@@ -408,8 +471,49 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.dll");
 services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 ```
 
-## 版本更新记录
+##### IO帮助类
 
+增加创建文件、目录、xml等操作
+
+```
+
+```
+
+### 版本更新记录
+
+* 1.4.1
+  * 将Newtonsoft.Json转入core包
+
+  * 将json序列化等操作转入core包
+  
+* 1.4.0-beta6
+  * 将部分无依赖的类移动到Common.Core中
+
+* 1.4.0-beta5
+  * 更新时间扩展类，移除TimeExtensions合并到DateTimeExtensions
+
+* 1.4.0-beta4
+  * 增加获取无时区时间的方案ToUnspecifiedDateTime
+
+* 1.4.0-beta3
+  * 修改CurrentUser默认注入
+
+  * 修改ToDateTimeString支持传入时间格式
+
+* 1.4.0-beta2
+  * 修改CurrentUser为DefaultUser
+
+* 1.4.0-beta1
+  * 升级支持.net7
+
+* 1.3.0-beta10
+  * 增加IsLongFormat、ToInt64
+
+* 1.3.0-beta9
+  * 增加appsettings、cron帮助类、HttpContextManager、HttpContextExtensions、ServiceProviderHelper、SessionHelper、ICurrentUser、BaseService
+
+* 1.3.0-beta8
+  * 增加生成验证码的方法，CommonHelper.GenerateVerifyCode
 * 1.3.0-beta7
   * 人信息扩展
   * 正则扩展
@@ -429,7 +533,7 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 * 1.3.0-beta3
   * 增加BaseRequestDto重载
 * 1.3.0-beta2
-  * 修复BaseRequestDto<T>导致UserIdentity出错问题
+  * 修复BaseRequestDto&lt;T&gt;导致UserIdentity出错问题
 * 1.3.0-beta1
   * 支持.Net6版本
   * 更新Operator支持主键设置类型
@@ -484,4 +588,4 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 * 1.0.1
   * 修改一些文件的命名空间  
 * 1.0.0
-  * 基本的公共库
+  * 基本的公共库  
