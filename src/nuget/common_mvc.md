@@ -340,9 +340,40 @@ services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
 services.RegisterUniteServices(assemblies, typeof(ISingletonDependency), ServiceLifetime.Singleton);
 ```
 
+### 显示所有服务信息
+
+使用方法
+
+```c#
+builder.Services.Configure<ShowServiceConfig>(config =>
+{
+    config.Services = new List<ServiceDescriptor>(builder.Services);
+
+    // 访问路径
+    config.Path = "/allservices";
+});
+```
+
+然后使用中间件
+
+```c#
+app.UseShowAllServicesMiddleware();
+```
+
 ## 版本更新记录
 
+* 0.1.0-beta3
+  
+  * 支持.net8
+  
+  * 支持显示所有服务以及服务注入的生命周期
+  
+* 0.1.0-beta2
+
+  * 优化代码
+
 * 0.1.0-beta1
+
   * 升级支持.net7
 
 * 0.0.1-beta6
@@ -373,10 +404,10 @@ services.RegisterUniteServices(assemblies, typeof(ISingletonDependency), Service
   * 处理自定义模型校验和自定义返回类一起使用导致重复包装的问题
 
 * 0.0.1-beat2
-  
+
   * 将关于swagger的东西去掉
   * 优化扩展方法命名空间，正规化
-  
+
 * 0.0.1-beta1
 
   * 从common里面移出来一些方法
