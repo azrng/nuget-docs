@@ -39,11 +39,16 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ### 版本更新记录
 
+* 1.2.1
+  * 查询请求类优化
+  
+  * QueryableExtensions类更新
+  
 * 1.2.0
   * GetPageRequest增加一个查询关键字
   * 将EFCoreExtension内容迁移到工作单元下
   * 工作单元类需要单独注入，如services.AddUnitOfWork&lt;BaseDbContext&gt;();
-  
+
 * 1.2.0-beta2
   * 将创建时间修改时间等改为传入方案，用来应对pgsql的时间区分有时区无时区方案
 * 1.2.0-beta1
