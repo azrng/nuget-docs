@@ -39,16 +39,20 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ### 版本更新记录
 
+* 1.3.0
+  * 模型类优化
+  * 将pgsql中列的PropertyBuilderExtensions迁移到该程序集
+  * 增加BaseRepository作为公共的操作，且方法为虚方法
+  * 移除IBaseRepository中的同步方法
+  
 * 1.2.1
   * 查询请求类优化
-  
+
   * QueryableExtensions类更新
-  
 * 1.2.0
   * GetPageRequest增加一个查询关键字
   * 将EFCoreExtension内容迁移到工作单元下
   * 工作单元类需要单独注入，如services.AddUnitOfWork&lt;BaseDbContext&gt;();
-
 * 1.2.0-beta2
   * 将创建时间修改时间等改为传入方案，用来应对pgsql的时间区分有时区无时区方案
 * 1.2.0-beta1
@@ -87,6 +91,9 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 ###  操作例子
 
 ### 版本更新记录
+
+* 1.3.0
+  * 增加InMemoryRepository继承自BaseRepository和IBaseRepository
 
 * 1.2.0
   * 优化注入服务的方法
@@ -147,9 +154,12 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 #### 版本更新记录
 
+* 1.3.0
+  * 增加PostgreRepository继承自BaseRepository和IBaseRepository
+  
 * 1.2.0
   * 移除工作单元注入
-  
+
 * 1.2.0-beta2
   * 新增设置时区的扩展方法
   * 同步支持Common.EFCore设置时间方案
