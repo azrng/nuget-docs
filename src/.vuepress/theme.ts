@@ -25,10 +25,10 @@ export default hopeTheme({
       // sidebar
       sidebar: zhSidebar,
 
-      metaLocales: {
-        lastUpdated: "上次编辑于",
-        editLink: "在 Gitlab 上编辑此页",
-      },
+      // metaLocales: {
+      //   lastUpdated: "上次编辑于",
+      //   editLink: "在 Gitlab 上编辑此页",
+      // },
     },
   },
 
@@ -43,7 +43,7 @@ export default hopeTheme({
     git: {
       createdTime: true,
       updatedTime: true,
-      contributors: true,
+      // contributors: true,
     },
     copyCode: {},
     // Disable features you don’t want here
