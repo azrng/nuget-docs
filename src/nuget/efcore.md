@@ -124,9 +124,12 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ### 版本更新记录
 
+* 1.3.0
+  * 增加PostgreRepository继承自BaseRepository和IBaseRepository
+  
 * 1.2.0
   * 优化注入服务逻辑
-  
+
 * 1.1.0
   * 升级支持.Net7
   * 修复迁移的时候自定义配置未生效问题
@@ -185,6 +188,9 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 #### 版本更新记录
 
+* 1.3.0
+  * 增加PostgreRepository继承自BaseRepository和IBaseRepository
+
 * 1.2.0
   * 移除工作单元注入
 
@@ -215,6 +221,10 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 #### 版本更新记录
 
+* 1.3.0
+  * 增加PostgreRepository继承自BaseRepository和IBaseRepository
+  * 支持.net7
+  
 * 1.0.0-beta3
   * 升级包版本，支持.net5和.net6
   
