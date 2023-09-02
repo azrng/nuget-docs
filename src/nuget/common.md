@@ -12,6 +12,22 @@ tag:
 ---
 ## Common.Core
 
+### 操作
+
+#### ObjectExtensions
+
+模型类转url参数格式(1.0.5)
+
+```c#
+var userInfo = new UserInfoDto { Id = 1, Name = "Test", };
+// 参数不转小写
+var result = userInfo.ToUrlParameter();// Id=1&Name=Test
+// 参数转小写
+var result = userInfo.ToUrlParameter(true);// id=1&name=Test
+```
+
+
+
 ### 版本更新记录
 
 * 1.0.4
