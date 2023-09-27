@@ -30,11 +30,14 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 
 ### 版本更新记录
 
+* 1.0.5
+  * 增加CollectionNotEmpty、MinValue特性
+  
 * 1.0.4
   * 迁移base64的扩展到StringExtension，并且改名为ToBase64Encode、FromBase64Decode
   * 增加时间段和时间点相互转换代码
   * 增加ExceptionExtension、DecimalExtension、DoublelExtension
-  
+
 * 1.0.3
   * 增加任务运行时间限制方法，TaskHelper.RunTimeLimitAsync
 
