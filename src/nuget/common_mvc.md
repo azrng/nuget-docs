@@ -21,8 +21,9 @@ tag:
 #### HttpContext扩展
 
 ```c#
-//获取请求的ip地址
-string ReqestIp(this HttpContext httpContext)
+var iPv4 = HttpContext.GetLocalIpAddressToIPv4();
+var ipv6 = HttpContext.GetLocalIpAddressToIPv6();
+var requestInfo = HttpContext.Request.GetRequestUrlAddress();
 ```
 
 ### 帮助类
@@ -51,16 +52,6 @@ T GetSession<T>(string key)
 
 //移除session
 void Remove(params string[] keys)
-```
-
-#### 配置读取
-
-```c#
-// 配置
-AppSettings.Configuration=Configuration;
-
-//查询指定的配置信息
-string GetValue(params string[] sections)
 ```
 
 ### 公共返回类
@@ -362,12 +353,20 @@ app.UseShowAllServicesMiddleware();
 
 ## 版本更新记录
 
+* 0.0.1-beta4
+  
+  * 增加HttpContext的扩展，例如获取远程IP、本地IP
+  * 增加CollectionNotEmpty、MinValue特性
+  * 迁移ServiceCollectionExtension
+  * 增加services.AddMvcModelVerifyFilter 模型校验过滤器
+  * 增加services.AddMvcResultPackFilterFilter返回值包装过滤器
+  
 * 0.1.0-beta3
-  
+
   * 支持.net8
-  
+
   * 支持显示所有服务以及服务注入的生命周期
-  
+
 * 0.1.0-beta2
 
   * 优化代码

@@ -31,7 +31,8 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 ### 版本更新记录
 
 * 1.0.5
-  * 增加CollectionNotEmpty、MinValue特性
+  * 增加Random的NextDouble扩展方法
+  * 支持框架net6.0;net7.0
   
 * 1.0.4
   * 迁移base64的扩展到StringExtension，并且改名为ToBase64Encode、FromBase64Decode
@@ -489,23 +490,28 @@ public class UserService : IScopedDependency, IUserService
 services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.dll");
 或者
 services.RegisterBusinessServices("MySQL_NetCoreAPI_EFCore.*.dll");
+
+// 1.4.2 版本后支持传入程序集数组
+services.RegisterBusinessServices(assembly);
 ```
 
 ##### IO帮助类
 
 增加创建文件、目录、xml等操作
 
-```
-
-```
-
 ### 版本更新记录
+
+* 1.4.3
+  * 迁移ServiceCollectionExtension到Common.Mvc
+
+* 1.4.2
+  * RegisterBusinessServices扩展方法增加重载
 
 * 1.4.1
   * 将Newtonsoft.Json转入core包
 
   * 将json序列化等操作转入core包
-  
+
 * 1.4.0-beta6
   * 将部分无依赖的类移动到Common.Core中
 
