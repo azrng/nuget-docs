@@ -30,10 +30,17 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 
 ### 版本更新记录
 
+* 1.0.6
+  * 增加程序集扩展方法和程序集帮助类以及获取所有程序集的方法
+  
+  * 增加枚举帮助类EnumHelper，迁移枚举扩展中部分方法到枚举帮助类中
+  
+  * 枚举扩展类中方法GetDescriptionString改名GetDescription
+  
 * 1.0.5
   * 增加Random的NextDouble扩展方法
   * 支持框架net6.0;net7.0
-  
+
 * 1.0.4
   * 迁移base64的扩展到StringExtension，并且改名为ToBase64Encode、FromBase64Decode
   * 增加时间段和时间点相互转换代码
