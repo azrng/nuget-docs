@@ -32,13 +32,12 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 
 * 1.0.8
   * 升级支持.net8
-  
 * 1.0.7
   * 更新ICurrentUser默认为string类型UserId
-
 * 1.0.6
-  * 增加了不少扩展方法
-
+  * 增加程序集扩展方法和程序集帮助类以及获取所有程序集的方法
+  * 增加枚举帮助类EnumHelper，迁移枚举扩展中部分方法到枚举帮助类中
+  * 枚举扩展类中方法GetDescriptionString改名GetDescription
 * 1.0.5
   * 增加Random的NextDouble扩展方法
   * 支持框架net6.0;net7.0
