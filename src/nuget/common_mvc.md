@@ -353,14 +353,22 @@ app.UseShowAllServicesMiddleware();
 
 ## 版本更新记录
 
-* 0.0.1-beta4
+* 0.0.1-beta6
   
+  * 升级支持.net8
+  
+* 0.0.1-beta5
+
+  * 修复批量注入的问题
+
+* 0.0.1-beta4
+
   * 增加HttpContext的扩展，例如获取远程IP、本地IP
   * 增加CollectionNotEmpty、MinValue特性
   * 迁移ServiceCollectionExtension
   * 增加services.AddMvcModelVerifyFilter 模型校验过滤器
   * 增加services.AddMvcResultPackFilterFilter返回值包装过滤器
-  
+
 * 0.1.0-beta3
 
   * 支持.net8

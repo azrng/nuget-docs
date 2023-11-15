@@ -30,10 +30,19 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 
 ### 版本更新记录
 
+* 1.0.8
+  * 升级支持.net8
+  
+* 1.0.7
+  * 更新ICurrentUser默认为string类型UserId
+
+* 1.0.6
+  * 增加了不少扩展方法
+
 * 1.0.5
   * 增加Random的NextDouble扩展方法
   * 支持框架net6.0;net7.0
-  
+
 * 1.0.4
   * 迁移base64的扩展到StringExtension，并且改名为ToBase64Encode、FromBase64Decode
   * 增加时间段和时间点相互转换代码

@@ -39,6 +39,9 @@ string GetSHA512Hash(this string str)
 
 ## 版本更新记录
 
+* 0.0.1-beta3
+  * 支持MD5、SHA等、DES、AES、RSA等
+
 * 0.0.1-beta2
   * fix处理md5加密将16位和32位弄混问题
 
