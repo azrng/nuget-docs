@@ -1,0 +1,8 @@
+import{_ as e}from"./plugin-vue_export-helper-c27b6911.js";import{o as i,c as l,a as n}from"./app-55240811.js";const a={},t=n(`<h2 id="common-jwttoken" tabindex="-1"><a class="header-anchor" href="#common-jwttoken" aria-hidden="true">#</a> Common.JwtToken</h2><h3 id="操作例子" tabindex="-1"><a class="header-anchor" href="#操作例子" aria-hidden="true">#</a> 操作例子</h3><div class="language-c# line-numbers-mode" data-ext="c#"><pre class="language-c#"><code>1. 注入服务
+services.AddJwtTokenService(options =&gt;
+{
+    options.JwtAudience = &quot;aaaa&quot;;
+    options.JwtIssuer = &quot;bbbb&quot;;
+});
+2.注入服务IJwtAuthService
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="版本更新记录" tabindex="-1"><a class="header-anchor" href="#版本更新记录" aria-hidden="true">#</a> 版本更新记录</h3><ul><li><p>1.2.1</p><ul><li>升级包版本以及维护文档</li></ul></li><li><p>1.2.0-beta2</p><ul><li>将swagger使用迁移到该包中</li></ul></li><li><p>1.2.0-beta1</p><ul><li>升级支持net7</li><li>注入服务的方式更新</li></ul></li><li><p>1.1.3</p><ul><li>支持netcoreapp3.1;net5.0;net6.0</li><li>优化方法，增加校验token方法</li></ul></li><li><p>1.1.2</p><ul><li>配置多个目标框架</li></ul></li><li><p>1.1.1</p><ul><li>拓展生成token的方法</li></ul></li><li><p>1.1.0</p><ul><li>更新版本为5.0</li></ul></li><li><p>1.0.0</p><ul><li>3.1版本的jwttoken公共库</li></ul></li></ul>`,5),o=[t];function s(d,r){return i(),l("div",null,o)}const p=e(a,[["render",s],["__file","jwttoken.html.vue"]]);export{p as default};
