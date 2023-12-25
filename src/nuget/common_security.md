@@ -49,6 +49,9 @@ Sm4对称加密算法：Sm4Helper
 
 ## 更新记录
 
+* 0.0.1-beta6
+  * 替换依赖包BouncyCastle.NetCore为BouncyCastle.Cryptography，且将里面的一些源码操作改为使用包的方法，性能更好
+
 * 0.0.1-beta5
   * 增加SHA的HMAC算法
 
