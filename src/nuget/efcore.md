@@ -39,12 +39,15 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ### 版本更新记录
 
-* 1.3.0
+* 1.3.0-beta2
+  * 升级.Net8
+  
+* 1.3.0-beta1
   * 模型类优化
   * 将pgsql中列的PropertyBuilderExtensions迁移到该程序集
   * 增加BaseRepository作为公共的操作，且方法为虚方法
   * 移除IBaseRepository中的同步方法
-  
+
 * 1.2.1
   * 查询请求类优化
 
@@ -157,9 +160,12 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 #### 版本更新记录
 
-* 1.3.0
-  * 增加PostgreRepository继承自BaseRepository和IBaseRepository
+* 1.3.0-beta2
+  * 升级支持.Net8
   
+* 1.3.0-beta1
+  * 增加PostgreRepository继承自BaseRepository和IBaseRepository
+
 * 1.2.0
   * 移除工作单元注入
 
