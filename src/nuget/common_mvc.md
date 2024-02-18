@@ -10,7 +10,7 @@ category:
 tag:
  - 库
 ---
-## 介绍
+## 说明
 
 常见的Asp.NetCore里面辅助方法
 
@@ -353,10 +353,15 @@ app.UseShowAllServicesMiddleware();
 
 ## 版本更新记录
 
+* 0.0.1-beta7
+  
+  * 增加RequestBodyAsync扩展，以及增加请求体重复读取中间件
+  * 优化模型校验方法
+  
 * 0.0.1-beta6
-  
+
   * 升级支持.net8
-  
+
 * 0.0.1-beta5
 
   * 修复批量注入的问题

@@ -30,6 +30,11 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 
 ### 版本更新记录
 
+* 1.0.9
+  * 获取特殊文件夹之桌面文件路径
+  * 增加检查文件是否被其他进程锁定方法
+  * 增加获取NTP网络远程时间
+  * 增加系统操作：获取本机ip、ipv4地址、ipv6地址
 * 1.0.8
   * 升级支持.net8
 * 1.0.7
