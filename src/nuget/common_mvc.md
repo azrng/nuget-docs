@@ -353,11 +353,15 @@ app.UseShowAllServicesMiddleware();
 
 ## 版本更新记录
 
-* 0.0.1-beta7
+* 0.0.1-beta8
   
+  * 修复MinValue特性bug
+  
+* 0.0.1-beta7
+
   * 增加RequestBodyAsync扩展，以及增加请求体重复读取中间件
   * 优化模型校验方法
-  
+
 * 0.0.1-beta6
 
   * 升级支持.net8
