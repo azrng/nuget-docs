@@ -10,6 +10,17 @@ category:
 tag:
  - 库
 ---
+## Common.Db.Core
+
+一个数据库操作的核心库，包含一些公用类等
+
+### 版本更新记录
+
+* 0.0.2
+  * 迁移Common.EfCore的类到DBCore中
+* 0.0.1
+  * 请求类和响应类处理
+
 ## Common.EFCore
 
 ### 操作例子
@@ -39,15 +50,15 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ### 版本更新记录
 
+* 1.3.0-beta3
+  * 迁移Common.EfCore的类到DBCore中
 * 1.3.0-beta2
   * 升级.Net8
-  
 * 1.3.0-beta1
   * 模型类优化
   * 将pgsql中列的PropertyBuilderExtensions迁移到该程序集
   * 增加BaseRepository作为公共的操作，且方法为虚方法
   * 移除IBaseRepository中的同步方法
-
 * 1.2.1
   * 查询请求类优化
 
