@@ -77,7 +77,7 @@ services.AddMemoryCacheExtension(x =>
 首先需要安装nuget包，直接安装最新版本即可
 
 ```
-services.AddCacheService(x =>
+services.AddRedisCacheService(x =>
 {
     x.ConnectionString = "localhost:6379,password=123456,DefaultDatabase=0";
     x.KeyPrefix = "test";
@@ -87,6 +87,10 @@ services.AddCacheService(x =>
 然后在需要使用的地方进行注入ICacheProvider就可以使用了
 
 ### 版本更新记录
+
+* 1.2.0-beta2
+  * 依赖基类包：Azrng.Cache.Core
+  * 优化代码
 
 * 1.2.0-beta1
   * 支持netstandard2.1;net6.0;net7.0;net8.0
