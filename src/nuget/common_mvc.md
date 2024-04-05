@@ -351,13 +351,7 @@ services.RegisterUniteServices(assemblies, typeof(ISingletonDependency), Service
 使用方法
 
 ```c#
-builder.Services.Configure<ShowServiceConfig>(config =>
-{
-    config.Services = new List<ServiceDescriptor>(builder.Services);
-
-    // 访问路径
-    config.Path = "/allservices";
-});
+services.AddShowAllServices("/allservices");
 ```
 
 然后使用中间件
