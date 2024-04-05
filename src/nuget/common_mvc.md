@@ -142,7 +142,17 @@ public IResultModel<IEnumerable<WeatherForecast>> Get()
 }
 ```
 
-### 自定义结果过滤器
+### Cors
+
+处理前端跨域的问题
+
+```csharp
+service.AddAnyCors();
+
+app.UseAnyCors();
+```
+
+### 自定义返回结果包装
 
 通过自定义结果过滤器来默认给所有接口最外层包装一层返回类
 
@@ -151,6 +161,10 @@ services.AddControllers(options =>
 {
     options.Filters.Add(typeof(CustomResultPackFilter));
 });
+
+// 或者
+
+services.AddMvcResultPackFilterFilter();
 ```
 
 若是有些Action不想包装一层，只需要标注特性即可在返回的时候不显示包装的一层
@@ -200,8 +214,6 @@ public class Userinfo
 
 这个效果是不方便前端处理的，所以我们使用的，所以我们自己做模型校验来封装错误信息
 
-
-
 > 注意：需要先关闭默认的模型校验。
 
 在ConfigureServices中注册自定义模型验证过滤器并禁用默认的自动模型验证
@@ -215,6 +227,9 @@ services.AddControllers(options =>
 	//[ApiController] 默认自带有400模型验证，且优先级比较高，如果需要自定义模型验证，则需要先关闭默认的模型验证
 	options.SuppressModelStateInvalidFilter = true; 
 });
+
+// 或者使用
+services.AddMvcModelVerifyFilter();
 ```
 
 我们再次调用接口
