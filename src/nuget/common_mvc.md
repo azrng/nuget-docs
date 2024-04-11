@@ -173,6 +173,13 @@ services.AddMvcResultPackFilterFilter();
 [NoWrapperAttribute]
 ```
 
+或者通过传入忽略的前缀来忽略指定接口的返回值包装
+
+```csharp
+builder.Services.AddSwaggerGen()
+    .AddMvcResultPackFilterFilter("/api/configDashboard");
+```
+
 ### 自定义模型验证
 
 因为默认是启用模型校验的，所以当你传的model参数有问题的时候，还未到达action的时候已经处理了校验。
@@ -362,24 +369,28 @@ app.UseShowAllServicesMiddleware();
 
 ## 版本更新记录
 
-* 0.0.1-beta8
+* 0.1.0
   
+  * 返回值包装支持传入忽略包装的前缀
+  
+* 0.1.0-beta8
+
   * 修复MinValue特性bug
-  
-* 0.0.1-beta7
+
+* 0.1.0-beta7
 
   * 增加RequestBodyAsync扩展，以及增加请求体重复读取中间件
   * 优化模型校验方法
 
-* 0.0.1-beta6
+* 0.1.0-beta6
 
   * 升级支持.net8
 
-* 0.0.1-beta5
+* 0.1.0-beta5
 
   * 修复批量注入的问题
 
-* 0.0.1-beta4
+* 0.1.0-beta4
 
   * 增加HttpContext的扩展，例如获取远程IP、本地IP
   * 增加CollectionNotEmpty、MinValue特性

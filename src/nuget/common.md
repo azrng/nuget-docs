@@ -35,6 +35,7 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
   * 增加检查文件是否被其他进程锁定方法
   * 增加获取NTP网络远程时间
   * 增加系统操作：获取本机ip、ipv4地址、ipv6地址
+  * 增加MimeExtensions扩展
 * 1.0.8
   * 升级支持.net8
 * 1.0.7
