@@ -106,6 +106,12 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ### 版本更新记录
 
+* 1.3.0-beta2
+  * 支持.net8
+
+* 1.3.0-beta1
+  * 优化
+
 * 1.3.0
   * 增加InMemoryRepository继承自BaseRepository和IBaseRepository
 
