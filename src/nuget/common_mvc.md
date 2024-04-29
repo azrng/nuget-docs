@@ -369,10 +369,14 @@ app.UseShowAllServicesMiddleware();
 
 ## 版本更新记录
 
+* 0.1.1
+  
+  * 修复CustomResultPackFilter使用报错问题
+  
 * 0.1.0
-  
+
   * 返回值包装支持传入忽略包装的前缀
-  
+
 * 0.1.0-beta8
 
   * 修复MinValue特性bug

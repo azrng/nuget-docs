@@ -26,11 +26,11 @@ var result = userInfo.ToUrlParameter();// Id=1&Name=Test
 var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 ```
 
-
-
 ### 版本更新记录
 
-* 1.0.10(未发布)
+* 1.0.10-未发布
+  * 增加AsyncHelper执行同步方法
+  * 移除获取时间戳弃用的方法
   * 增加CollectionHelper支持分页批次处理数据
 * 1.0.9
   * 获取特殊文件夹之桌面文件路径
