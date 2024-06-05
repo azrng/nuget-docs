@@ -15,6 +15,9 @@ tag:
 
 ### 版本更新记录
 
+* 0.0.2
+  * 修改方法KeyDeleteInBatchAsync为RemoveMatchKeyAsync
+
 * 0.0.1
   * 第一版本接口定义
 
@@ -35,6 +38,13 @@ services.AddMemoryCacheExtension(x =>
 
 ### 版本更新记录
 
+* 1.3.0-beta4
+  * 修改方法KeyDeleteInBatchAsync为RemoveMatchKeyAsync
+
+  * 修改方法GetAllCacheKeys为GetAllKeys
+  
+  * 修改方法RemoveCacheAllAsync改为RemoveAllKeyAsync
+  
 * 1.3.0-beat3
   * 修复依赖注入问题
 
@@ -88,6 +98,9 @@ services.AddRedisCacheService(x =>
 
 ### 版本更新记录
 
+* 1.2.0-beta-3
+  * 修改方法KeyDeleteInBatchAsync为RemoveMatchKeyAsync
+  
 * 1.2.0-beta2
   * 依赖基类包：Azrng.Cache.Core
   * 优化代码
