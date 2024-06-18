@@ -14,11 +14,13 @@ tag:
 
 ### 操作例子
 
+ConfigureServices里面添加
+
 ```c#
-ConfigureServices里面添加：
 services.AddHttpClientService();  
-需要用到的地方直接注入IHttpClientHelper进行
 ```
+
+需要用到的地方直接注入IHttpClientHelper进行
 
 #### PostFormData
 
@@ -46,7 +48,8 @@ var response = await client.PostFormDataAsync<string>("api/file", form);
 
 * 1.2.2
   * 增加x-www-form-urlencoded请求方式代码
-
+  * 升级支持.Net8
+  
 * 1.2.1
   * 增加get获取文件流的方法
 
