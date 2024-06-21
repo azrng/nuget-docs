@@ -10,6 +10,29 @@ category:
 tag:
  - 库
 ---
+## Common.S3
+
+一个基于AWSSDK.S3包适用于S3协议的存储封装类库。
+
+### 操作示例
+
+```
+services.AddS3Store(x =>
+{
+    x.Url = "http://localhost:9000";
+    x.AccessKey = "admin";
+    x.SecretKey = "123456789";
+});
+
+// 或者连接字符串形式
+services.AddS3Store("http://admin:123456789@localhost:9008");
+```
+
+### 版本更新记录
+
+* 1.0.0-beta1
+  * 基本s3操作，支持不安全https等
+
 ## Common.MinioStore
 
 一个基于AWSSDK.S3包适用于S3协议的存储封装类库。
