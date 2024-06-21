@@ -32,6 +32,8 @@ services.AddMinioStore("http://admin:123456789@localhost:9008");
 
 ### 版本更新记录
 
+* 1.0.0-beta3
+  * 支持minio适配不安全https问题
 * 1.0.0-beta2
   * 增加支持.Net7、.Net8框架
   * 支持连接字符串方案
