@@ -28,6 +28,8 @@ services.AddSqlMigrationService("default", config =>
 
 ### 版本更新记录
 
+* 0.0.3-未发布
+  * 更新迁移输出内容
 * 0.0.2
   * 修复sql问题
 * 0.0.1
