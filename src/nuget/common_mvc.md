@@ -372,6 +372,7 @@ app.UseShowAllServicesMiddleware();
 * 0.1.1
   
   * 修复CustomResultPackFilter使用报错问题
+  * 增加审计日志中间件
   
 * 0.1.0
 
@@ -452,5 +453,15 @@ app.UseShowAllServicesMiddleware();
 
   * 从common里面移出来一些方法
 
-    
+
+
+
+## Azrng.Swashbuckle
+
+### 版本更新记录
+
+* 0.1.0
+  * 可扩展性增强
+* 0.0.1
+  * 基本操作
 
