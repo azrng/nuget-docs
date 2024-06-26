@@ -16,10 +16,11 @@ tag:
 
 ### 版本更新记录
 
-* 0.0.3
+* 0.0.3-未发布
   * 增加NotNull静态分析
   * 移除过期的方法
-
+  * 更新dbcore类库MarkEqual方法为扩展方法
+  
 * 0.0.2
   * 迁移Common.EfCore的类到DBCore中
 * 0.0.1
