@@ -59,10 +59,6 @@ services.AddAuthentication(options =>
 
 使用依赖注入注入IJwtAuthService来创建token等
 
-## Common.JwtToken
-
-::: tip
-
 ### 版本更新记录
 
 * 1.0.0-未发布
