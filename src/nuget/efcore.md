@@ -16,10 +16,14 @@ tag:
 
 ### 版本更新记录
 
+* 0.1.0
+  * 命名空间迁移到Common.Core
+  * 增加表达式树帮助类Expressionable
+  * 增加RefAsync用于分页查询
+  
 * 0.0.3
   * 增加NotNull静态分析
   * 移除过期的方法
-
 * 0.0.2
   * 迁移Common.EfCore的类到DBCore中
 * 0.0.1
@@ -54,10 +58,15 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ### 版本更新记录
 
+* 1.3.0
+  * 适配Common.Db.Core的0.1.0版本
+  
+  * 增加分页扩展ToPageListAsync
+  
 * 1.3.0-beta4
   * 修改方法SetDelete为SetDeleted
   * 默认设置创建时间的时候使用无时区时间，防止pgsql出问题
-  
+
 * 1.3.0-beta3
   * 迁移Common.EfCore的类到DBCore中
 * 1.3.0-beta2
