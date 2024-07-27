@@ -37,7 +37,44 @@ services.AddAuthentication(BasicAuthentication.AuthenticationSchema)
 * 0.0.1
   * 基础的Basic认证包
 
+## Azrng.AspNetCore.Authentication.JwtBearer
+
+### 使用方法
+
+注入服务
+
+```csharp
+services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtAuthentication(options =>
+            {
+                options.JwtAudience = jwtKeyConfig.Audience;
+                options.JwtIssuer = jwtKeyConfig.Issuer;
+                options.JwtSecretKey = jwtKeyConfig.Key;
+            });
+```
+
+使用依赖注入注入IJwtAuthService来创建token等
+
 ## Common.JwtToken
+
+::: tip
+
+### 版本更新记录
+
+* 1.0.0-未发布
+  * 从包Common.JwtToken中迁移过来
+
+## Common.JwtToken
+
+::: tip
+
+改名为Azrng.AspNetCore.Authentication.JwtBearer
+
+:::
 
 ### 操作例子
 

@@ -54,6 +54,10 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ### 版本更新记录
 
+* 1.3.0-beta4
+  * 修改方法SetDelete为SetDeleted
+  * 默认设置创建时间的时候使用无时区时间，防止pgsql出问题
+  
 * 1.3.0-beta3
   * 迁移Common.EfCore的类到DBCore中
 * 1.3.0-beta2
@@ -179,11 +183,22 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ####  操作例子
 
+```csharp
+services.AddEntityFramework<AuthDbContext>(options =>
+{
+    options.ConnectionString = Configuration["DbConfig:Npgsql:ConnectionString"];
+    options.Schema = "auth";
+});
+```
+
 #### 版本更新记录
 
+* 1.3.0-beta3-未发布
+  * 更新EFCore.NamingConventions包版本
+  
 * 1.3.0-beta2
   * 升级支持.Net8
-  
+
 * 1.3.0-beta1
   * 增加PostgreRepository继承自BaseRepository和IBaseRepository
 
