@@ -28,6 +28,8 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 
 ### 版本更新记录
 
+* 1.1.1-未发布
+  * 增加默认无参数的ToStandardString
 * 1.1.0
   * 优化ResultModel类，增加Failure方法
 * 1.0.10
