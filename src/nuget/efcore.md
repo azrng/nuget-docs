@@ -16,11 +16,15 @@ tag:
 
 ### 版本更新记录
 
-* 0.0.3-未发布
+* 0.1.0
+  * 命名空间迁移到Common.Core
+  * 增加表达式树帮助类Expressionable
+  * 增加RefAsync用于分页查询
+  
+* 0.0.3
   * 增加NotNull静态分析
   * 移除过期的方法
   * 更新dbcore类库MarkEqual方法为扩展方法
-  
 * 0.0.2
   * 迁移Common.EfCore的类到DBCore中
 * 0.0.1
@@ -54,6 +58,15 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 ```
 
 ### 版本更新记录
+
+* 1.3.0
+  * 适配Common.Db.Core的0.1.0版本
+  
+  * 增加分页扩展ToPageListAsync
+  
+* 1.3.0-beta4
+  * 修改方法SetDelete为SetDeleted
+  * 默认设置创建时间的时候使用无时区时间，防止pgsql出问题
 
 * 1.3.0-beta3
   * 迁移Common.EfCore的类到DBCore中
@@ -180,11 +193,22 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ####  操作例子
 
+```csharp
+services.AddEntityFramework<AuthDbContext>(options =>
+{
+    options.ConnectionString = Configuration["DbConfig:Npgsql:ConnectionString"];
+    options.Schema = "auth";
+});
+```
+
 #### 版本更新记录
 
+* 1.3.0-beta3-未发布
+  * 更新EFCore.NamingConventions包版本
+  
 * 1.3.0-beta2
   * 升级支持.Net8
-  
+
 * 1.3.0-beta1
   * 增加PostgreRepository继承自BaseRepository和IBaseRepository
 

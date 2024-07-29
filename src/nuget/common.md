@@ -28,6 +28,10 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 
 ### 版本更新记录
 
+* 1.1.1-未发布
+  * 增加默认无参数的ToStandardString
+* 1.1.0
+  * 优化ResultModel类，增加Failure方法
 * 1.0.10
   * 增加AsyncHelper执行同步方法
   * 移除获取时间戳弃用的方法
@@ -50,20 +54,16 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 * 1.0.5
   * 增加Random的NextDouble扩展方法
   * 支持框架net6.0;net7.0
-
 * 1.0.4
   * 迁移base64的扩展到StringExtension，并且改名为ToBase64Encode、FromBase64Decode
   * 增加时间段和时间点相互转换代码
   * 增加ExceptionExtension、DecimalExtension、DoublelExtension
-
 * 1.0.3
   * 增加任务运行时间限制方法，TaskHelper.RunTimeLimitAsync
 
   * 增加字符串输出扩展
-
 * 1.0.2
   * 增加本地日志文件操作类
-
 * 1.0.1
   * 引用Newtonsoft.Json包，增加json操作扩展
   * 将扩展方法的命名空间改为Common.Extension

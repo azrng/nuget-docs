@@ -28,3 +28,12 @@ tag:
 
 * 0.0.1
   * 基本操作
+
+## Azrng.DistributeLock.PostgreSql
+
+基于pgsql数据库的分布式锁
+
+### 更新记录
+
+* 0.0.1
+  * 基本操作
