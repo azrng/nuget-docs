@@ -32,6 +32,9 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
   * 增加默认无参数的ToStandardString
   * 增加将时间转年月日：ToDateString
   * 增加Check帮助类
+  * 增加Console的输出ReadLineWithPrompt、ReadKeyWithPrompt
+  * 增加ApplicationHelper应用程序帮助类
+  * 将LongHelper改名为NumberHelper
 * 1.1.0
   * 优化ResultModel类，增加Failure方法
 * 1.0.10
