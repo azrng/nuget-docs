@@ -20,7 +20,7 @@ tag:
   * 命名空间迁移到Common.Core
   * 增加表达式树帮助类Expressionable
   * 增加RefAsync用于分页查询
-  
+
 * 0.0.3
   * 增加NotNull静态分析
   * 移除过期的方法
@@ -33,12 +33,12 @@ tag:
 ## Common.EFCore
 
 ### 操作例子
-只是包含EFCore公共Base类   
+只是包含EFCore公共Base类
 
  Statrup的ConfigureServices方法添加
 
 ```
-services.AddAutoGenerationId(); //增加自增ID 
+services.AddAutoGenerationId(); //增加自增ID
 ```
 
 继承公共基类
@@ -57,17 +57,48 @@ EntityTypeConfigurationIdentityOperator、EntityTypeConfigurationIdentityOperato
 EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityOperatorStatus<T, TKey>
 ```
 
+#### 多上下文的情况
+
+注入示例
+``` csharp
+service.AddEntityFramework<TestDbContext>(options =>
+       {
+           options.ConnectionString = connectionStr;
+           options.Schema = "public";
+       })
+       .AddUnitOfWork<TestDbContext>();
+
+service.AddEntityFramework<TestDb2Context>(options =>
+       {
+           options.ConnectionString = connection2Str;
+           options.Schema = "public";
+       })
+       .AddUnitOfWork<TestDb2Context>();
+```
+
+当需要获取IBaseRepository<IEntity>去操作数据库的时候，不能直接注入IBaseRepository<IEntity>，而应该是通过注入IUnitOfWork<DbContext>来获取，示例如下
+```csharp
+var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork<TestDbContext>>();
+var testDb1Rep = unitOfWork.GetRepository<TestEntity>();
+var content = Guid.NewGuid().ToString();
+await testDb1Rep.AddAsync(new TestEntity(content));
+var flag = await unitOfWork.SaveChangesAsync();
+Assert.True(flag > 0);
+```
+
+
 ### 版本更新记录
 
+* 1.3.2
+  * 修复IUnitOfWork<IEntity>在多上下文中保存失败的问题
+* 1.3.1
+  * 移出调用工作单元的时候才添加IUnitOfWork，默认会添加一个IUnitOfWork
 * 1.3.0
   * 适配Common.Db.Core的0.1.0版本
-  
   * 增加分页扩展ToPageListAsync
-  
 * 1.3.0-beta4
   * 修改方法SetDelete为SetDeleted
   * 默认设置创建时间的时候使用无时区时间，防止pgsql出问题
-
 * 1.3.0-beta3
   * 迁移Common.EfCore的类到DBCore中
 * 1.3.0-beta2
@@ -124,18 +155,15 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 ### 版本更新记录
 
+* 1.3.0
+  - 增加默认注入IUnitOfWork
 * 1.3.0-beta2
   * 支持.net8
-
 * 1.3.0-beta1
   * 优化
-
-* 1.3.0
-  * 增加InMemoryRepository继承自BaseRepository和IBaseRepository
-
 * 1.2.0
   * 优化注入服务的方法
-
+  * 增加InMemoryRepository继承自BaseRepository和IBaseRepository
 * 1.2.0-beta1
   * 升级支持.net7
 * 1.1.0-beta5
@@ -164,7 +192,8 @@ EntityTypeConfigurationIdentityOperatorStatus、EntityTypeConfigurationIdentityO
 
 * 1.3.0
   * 增加PostgreRepository继承自BaseRepository和IBaseRepository
-  
+  * 增加默认注入IUnitOfWork
+
 * 1.2.0
   * 优化注入服务逻辑
 
@@ -203,9 +232,10 @@ services.AddEntityFramework<AuthDbContext>(options =>
 
 #### 版本更新记录
 
-* 1.3.0-beta3-未发布
+* 1.3.0
   * 更新EFCore.NamingConventions包版本
-  
+  * 增加默认注入IUnitOfWork
+
 * 1.3.0-beta2
   * 升级支持.Net8
 
@@ -242,22 +272,17 @@ services.AddEntityFramework<AuthDbContext>(options =>
 
 * 1.3.0
   * 增加PostgreRepository继承自BaseRepository和IBaseRepository
-
+  * 增加默认注入IUnitOfWork
 * 1.2.0
   * 移除工作单元注入
-
 * 1.1.2
   * 修复迁移的时候自定义配置未生效问题
-
 * 1.1.1
   * 移除Zack.EFCore.Batch.Sqlite_NET6包
-
 * 1.1.0
   * 升级包版本，支持.net6、.net7
-
 * 1.0.0-beta3
   * 升级包版本，支持.netstandard2.1和.net5以及.net6
-
 * 1.1.0-beta2
   * 增加非追踪
 * 1.0.0-beta1
@@ -275,11 +300,12 @@ services.AddEntityFramework<AuthDbContext>(options =>
 
 * 1.3.0
   * 增加PostgreRepository继承自BaseRepository和IBaseRepository
-  * 支持.net7
-  
+  * 支持.net7、.net8
+  * 增加默认注入IUnitOfWork
+
 * 1.0.0-beta3
   * 升级包版本，支持.net5和.net6
-  
+
 * 1.1.0-beta2
   * 增加非追踪
 * 1.0.0-beta1

@@ -28,13 +28,17 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 
 ### 版本更新记录
 
-* 1.1.1-未发布
+* 1.1.2
+  * 更新时间扩展，增加 DateTime?.ToDateString、DateTime?.ToStandardString
+  * 将一部分方法抽离到DateTimeHelper中，防止扩展污染
+* 1.1.1
   * 增加默认无参数的ToStandardString
   * 增加将时间转年月日：ToDateString
-  * 增加Check帮助类
+  * 增加Guard帮助类，使用方法比如Guard.Against.Null("输入值", "参数名");
   * 增加Console的输出ReadLineWithPrompt、ReadKeyWithPrompt
   * 增加ApplicationHelper应用程序帮助类
   * 将LongHelper改名为NumberHelper
+  * 增加获取无时区的当前时间
 * 1.1.0
   * 优化ResultModel类，增加Failure方法
 * 1.0.10
@@ -99,18 +103,18 @@ bool HasChinese(this string str)
 bool IsNotNullOrWhiteSpace(this string currentString)
 //判断字符串 是  null、空和空白字符
 bool IsNullOrWhiteSpace(this string currentString)
-//判断字符串是  null、空    
+//判断字符串是  null、空
 bool IsNullOrEmpty(this string currentString)
 //判断字符串不是  null、空
-bool IsNotNullOrEmpty(this string currentString)    
+bool IsNotNullOrEmpty(this string currentString)
 //字符串分割成字符串数组
 string[] ToStrArray(this string str, string separator = ",")
 //根据条件拼接字符串
 StringBuilder AppendIF(this StringBuilder builder, bool condition, string str)
-//获取特定位置的字符串    
-string GetByIndex(this string str, int index)   
-//忽略大小写的字符串比较    
-bool EqualsNoCase(this string aimStr, string comparaStr)    
+//获取特定位置的字符串
+string GetByIndex(this string str, int index)
+//忽略大小写的字符串比较
+bool EqualsNoCase(this string aimStr, string comparaStr)
 ```
 
 ##### 时间扩展
@@ -156,7 +160,7 @@ var datetime2= unixMillisecond.ToLocalTimeDateByMilliseconds();
 
 //当前时间是否周末
 bool IsWeekend(this DateTime dateTime)
-    
+
 //当前时间是否是工作日
 bool IsWeekday(this DateTime dateTime)
 
@@ -191,7 +195,7 @@ JObject ToJObject(this string json)
 string ToDecimalStandardString(this decimal dec, int number)
 // 自定义格式，默认返回返回格式：1.01
 string ToDecimalStandardString(this decimal dec)
-//自定义格式，不保留小数点后的0    
+//自定义格式，不保留小数点后的0
 string ToDecimalNoZeroString(this decimal dec, int number = 1)
 ```
 
@@ -221,7 +225,7 @@ T GetEnumValue<T>(string description)
 // 获取字段Description
 DescriptionAttribute[] GetDescriptAttr(this FieldInfo fieldInfo)
 //枚举转字典
-Dictionary<int, string> EnumToDictionary<T>() where T : Enum    
+Dictionary<int, string> EnumToDictionary<T>() where T : Enum
 ```
 
 ##### DataTable扩展
@@ -421,9 +425,9 @@ ResultModel<T>：IsSuccess、Code、Message、Data
 
 > 属性描述
 >
-> IsSuccess：是否成功  
-> Code:状态码  
-> Data:返回的数据  
+> IsSuccess：是否成功
+> Code:状态码
+> Data:返回的数据
 > Errors：模型校验的错误信息
 
 返回正确的方法
@@ -606,7 +610,7 @@ services.RegisterBusinessServices(assembly);
   * 本次发版修改了请求类和返回类，查询包可能会受影响
 * 1.2.4
   * 更新GetQueryPageRequest、GetPageInfoRequest、SortContent增加构造函数
-* 1.2.3 
+* 1.2.3
   * 更新公共分页返回类
 * 1.2.2
   * 更新返回类封装，支持使用静态方法使用
@@ -620,7 +624,7 @@ services.RegisterBusinessServices(assembly);
 * 1.1.5
   * 配置多个目标框架，支持net5
 * 1.1.4
-  * 增加分页请求类 
+  * 增加分页请求类
 * 1.1.3
   * 增加layui的数据表格返回类
 * 1.1.2
@@ -634,6 +638,6 @@ services.RegisterBusinessServices(assembly);
 * 1.0.2
   * 增加时间公共类
 * 1.0.1
-  * 修改一些文件的命名空间  
+  * 修改一些文件的命名空间
 * 1.0.0
-  * 基本的公共库  
+  * 基本的公共库

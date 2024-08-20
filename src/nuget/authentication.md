@@ -49,7 +49,7 @@ services.AddAuthentication(options =>
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtAuthentication(options =>
+            .AddJwtBearerAuthentication(options =>
             {
                 options.JwtAudience = jwtKeyConfig.Audience;
                 options.JwtIssuer = jwtKeyConfig.Issuer;
@@ -57,14 +57,14 @@ services.AddAuthentication(options =>
             });
 ```
 
-使用依赖注入注入IJwtAuthService来创建token等
+使用依赖注入注入IBearerAuthService来创建Token等
 
 ### 版本更新记录
 
-* 1.0.0-未发布
+* 1.0.0
   * 从包Common.JwtToken中迁移过来
 
-## Common.JwtToken
+## Common.JwtToken(弃用)
 
 ::: tip
 
@@ -100,15 +100,15 @@ services.AddJwtTokenService(options =>
 * 1.1.3
   * 支持netcoreapp3.1;net5.0;net6.0
   * 优化方法，增加校验token方法
-* 1.1.2 
-  * 配置多个目标框架  
+* 1.1.2
+  * 配置多个目标框架
 * 1.1.1
   * 拓展生成token的方法
-* 1.1.0 
-  * 更新版本为5.0 
+* 1.1.0
+  * 更新版本为5.0
 
-* 1.0.0 
-  * 3.1版本的jwttoken公共库  
+* 1.0.0
+  * 3.1版本的jwttoken公共库
 
 ## Azrng.AspNetCore.Authorization.Default
 

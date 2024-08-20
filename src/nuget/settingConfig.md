@@ -55,7 +55,7 @@ var aa = await _configSettingService.GetConfigAsync<List<string>>("aaa");
 
   - [x] 页面标题设置
   - [x] 页面路由设置
-  - [ ] 页面加密访问
+  - [x] 页面加密访问
 
 * 系统配置界面
 
@@ -69,12 +69,12 @@ var aa = await _configSettingService.GetConfigAsync<List<string>>("aaa");
   - [x] 配置编辑
 
   - [x] 历史配置
-  
+
 * 存储
   - [x] pgsql存储
 * 使用
   - [x] 项目中查询
-  - [x] 查询缓存  
+  - [x] 查询缓存
   - [ ] 支持初始化数据
 
 ## 扩展
@@ -116,5 +116,5 @@ builder.Services.AddSettingConfig(options =>
 * 1.0.0
     * 增加了历史版本配置的复制
     * 增加Basic认证方案
-* 0.0.1  
+* 0.0.1
     * 基本的配置更新
