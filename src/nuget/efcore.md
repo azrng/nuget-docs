@@ -90,7 +90,7 @@ Assert.True(flag > 0);
 ### 版本更新记录
 
 * 1.3.2
-  * 修复IUnitOfWork<IEntity>在多上下文中保存失败的问题
+  * 修复IUnitOfWork&lt;IEntity&gt;在多上下文中保存失败的问题
 * 1.3.1
   * 移出调用工作单元的时候才添加IUnitOfWork，默认会添加一个IUnitOfWork
 * 1.3.0
