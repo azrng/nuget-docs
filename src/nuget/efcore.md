@@ -76,7 +76,7 @@ service.AddEntityFramework<TestDb2Context>(options =>
        .AddUnitOfWork<TestDb2Context>();
 ```
 
-当需要获取IBaseRepository<IEntity>去操作数据库的时候，不能直接注入IBaseRepository<IEntity>，而应该是通过注入IUnitOfWork<DbContext>来获取，示例如下
+当需要获取IBaseRepository&lt;IEntity&gt;去操作数据库的时候，不能直接注入IBaseRepository&lt;IEntity&gt;，而应该是通过注入IUnitOfWork&lt;DbContext&gt;来获取，示例如下
 ```csharp
 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork<TestDbContext>>();
 var testDb1Rep = unitOfWork.GetRepository<TestEntity>();
