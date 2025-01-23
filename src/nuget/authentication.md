@@ -12,8 +12,6 @@ tag:
 ---
 ## Azrng.AspNetCore.Authentication.Basic
 
-### 介绍
-
 Basic认证包
 
 ### 操作
@@ -31,6 +29,12 @@ services.AddAuthentication(BasicAuthentication.AuthenticationSchema)
 
 ### 版本更新记录
 
+* 0.1.0-未发布
+  * 适配Common.Core1.2.1的修改
+
+* 0.0.2
+  * 增加认证失败响应内容处理
+  * 支持.Net6、.Net7、.Net8
 * 0.0.1-beta2
   * 增加认证失败响应内容处理
   * 支持.Net6、.Net7、.Net8
@@ -61,6 +65,8 @@ services.AddAuthentication(options =>
 
 ### 版本更新记录
 
+* 1.1.0-未发布
+  * 适配Common.Core1.2.1的修改
 * 1.0.0
   * 从包Common.JwtToken中迁移过来
 
@@ -154,6 +160,8 @@ app.UseAuthorization();
 
 ### 版本更新记录
 
+* 0.0.2-待发布
+  * 更新授权方法名IsAuthorize为HasPermission
 * 0.0.1
   * 根据路由授权判断
 

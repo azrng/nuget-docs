@@ -22,6 +22,12 @@ export default defineUserConfig({
       indexContent: true
     }),
   ],
+  markdown: {
+    headers: {
+      // 提取md标题的深度
+      level: [2, 3, 4, 5]
+    }
+  },
   head: [
     // 百度统计代码  参考文档：https://blog.csdn.net/baijiafan/article/details/126657618
     ['script', {}, `

@@ -28,9 +28,36 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 
 ### 版本更新记录
 
+* 1.2.1
+  * 增加排序url参数值 UriHelper.SortUrlParameters，调整url扩展方法和帮助类
+  * 日志帮助类增加修改日志输出的级别
+  * 日志帮助类增加超过7天自动删除
+  * 增加IJsonSerializer接口
+  * 增加sql安全检测帮助类
+  * 在HtmlHelper下增加HtmlToText
+  * DateTimeHelper下增加GetTimeDifferenceText
+  * 增加CsvHelper
+  * 调整部分扩展方法目录
+* 1.2.0
+  * 移除包Newtonsoft.Json的依赖
+  * 更新获取网络时间的接口API
+  * 禁用部分涉及到序列化的方法
+* 1.1.6
+  * 修复GetColumnValueByName方法bug
+  * 支持.Net9
+* 1.1.5
+  * 修改GetColumnValueByName方法bug
+* 1.1.4
+  * 增加IEnumerable的WithIndex扩展
+  * ApplicationHelper类增加RuntimeInfo方法
+  * 优化IO操作方法
+* 1.1.3
+  * 字典增加GetOrDefault扩展方法
+  * 调整Guard中message和参数的顺序
 * 1.1.2
   * 更新时间扩展，增加 DateTime?.ToDateString、DateTime?.ToStandardString
   * 将一部分方法抽离到DateTimeHelper中，防止扩展污染
+  * 修改where筛选QueryableWhereIF为QueryableWhereIf
 * 1.1.1
   * 增加默认无参数的ToStandardString
   * 增加将时间转年月日：ToDateString
@@ -79,8 +106,6 @@ var result = userInfo.ToUrlParameter(true);// id=1&name=Test
 * 1.0.0
   * 将common中的部分类移动到该类库中
 ## Common
-
-### 介绍
 
 常见的公共类封库，继承自Common.Core
 
@@ -641,3 +666,11 @@ services.RegisterBusinessServices(assembly);
   * 修改一些文件的命名空间
 * 1.0.0
   * 基本的公共库
+
+## Common.Windows.Core
+
+### 版本更新记录
+* 0.0.2-未发版
+  * 支持.net7、.net8
+* 0.0.1
+  * 只支持.net6

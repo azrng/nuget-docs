@@ -104,7 +104,7 @@ builder.Services.AddSettingConfig(options =>
 });
 ```
 
-### 缓存扩展
+#### 缓存扩展
 
 该项目默认使用内存缓存进行存储，你可以自行继承接口来替换默认的缓存方案。
 
@@ -113,6 +113,10 @@ builder.Services.AddSettingConfig(options =>
 
 ## 版本更新记录
 
+* 1.1.0-未发布
+    * 适配Common.Core1.2.1的修改
+* 1.0.1
+    * 支持通过调用AddIfNotExistsAsync接口初始化数据
 * 1.0.0
     * 增加了历史版本配置的复制
     * 增加Basic认证方案
