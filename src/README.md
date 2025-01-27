@@ -29,17 +29,17 @@ features:
   - title: Common.Mvc
     icon: blog
     details: Common.Mvc的组件库文档
-    link: /nuget/common_mvc.md
+    link: /nuget/commonMvc.md
     
   - title: 加解密
     icon: blog
     details: 加解密的组件库文档
-    link: /nuget/common_security.md
+    link: /nuget/commonSecurity.md
 
   - title: HTTP请求
     icon: blog
     details: HTTP请求的组件库文档
-    link: /nuget/http_request.md
+    link: /nuget/httpRequest.md
 
   - title: 语雀
     icon: blog
